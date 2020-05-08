@@ -6,3 +6,46 @@ h1 {
   padding: 10px;
   
 }
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 5px;
+}
+
+ul li {
+  list-style-type: none;
+  border: 1px solid #ddd;
+  margin-top: -1px;
+  background-color: #f6f6f6;
+  padding: 12px;
+}
+input[type="text"] {
+  margin-top: 5px;
+  margin-left: 5px;
+  padding: 6px;
+  font-size: 15px;
+  border: 1px solid grey;
+  
+  width: 80%;
+  background: #f1f1f1;
+  clear: left;
+ 
+}
+button {
+  border-radius: 5px;
+  margin-top: 5px;
+  width: 40px;
+  padding: 5px;
+  background: blue;
+  color: white;
+  font-size: 17px;
+  border: 2px solid #2196f3;
+  cursor: pointer;
+  clear: right;
+
+}
+#search {
+  content: "";
+  clear: both;
+  display: table;
+}
