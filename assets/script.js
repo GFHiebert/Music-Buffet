@@ -10,6 +10,7 @@ jQuery.ajaxPrefilter(function (options) {
 });
 function getArtist() {
   $("#discover").on("click", function (event) {
+    $("#artist-list").empty();
     event.preventDefault();
     var artist = $("#newItem").val();
     var queryURL =
@@ -24,7 +25,7 @@ function getArtist() {
     }).done(function (response) {
       console.log(response);
       for (let i = 0; i < response.Similar.Results.length; i++)
-        $("#artists").append(
+        $("#artist-list").append(
           "<li>" + response.Similar.Results[i].Name + "</li>"
         );
     });
@@ -38,7 +39,7 @@ $("body").on("click", ".track", function () {
   
   function renderTrackList(trackList) {
 
-    var tracksEl = $("#tracks");
+    var tracksEl = $("#fav-artist-list");
     tracksEl.empty();
     var ulTracksEl = $("<ul>");
     for (var i = 0; i < trackList.length; i++) {
@@ -50,11 +51,11 @@ $("body").on("click", ".track", function () {
   }
   
   var testTrackList = [
-    "Darcy's Donkey",
-    "Cornfield Chase",
-    "There and Back Again",
-    "Sweden",
-    "Island Life",
+    "Gaelic Storm",
+    "The Dubliners",
+    "Hans Zimmer",
+    "Howard Shore",
+    "C418",
   ];
   renderTrackList(testTrackList);
   
