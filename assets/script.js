@@ -1,6 +1,12 @@
 let discoverBtn = document.getElementById("discover");
 let apikey = "368598-musicbuf-RZ4G3NI6";
+let addBtn = document.getElementById("add")
 
+jQuery.ajaxPrefilter(function (options) {
+  if (options.crossDomain && jQuery.support.cors) {
+    options.url = "https://cors-anywhere.herokuapp.com/" + options.url;
+  }
+});
 function getArtist() {
   $("#discover").on("click", function (event) {
     event.preventDefault();
@@ -23,37 +29,38 @@ function getArtist() {
     });
   });
 }
-
-//Listeners
 $("body").on("click", ".track", function () {
-  var songName = $(this).text();
-  console.log("Song clicked is: " + songName);
-});
-
-$("#save").on("click", function () {
-  var artist = $(this).prev().val();
-  console.log("Searching for: " + artist);
-});
-
-function renderTrackList(trackList) {
-  var tracksEl = $("#tracks");
-  tracksEl.empty();
-  var ulTracksEl = $("<ul>");
-  for (var i = 0; i < trackList.length; i++) {
-    var liTracksEl = $("<li>").addClass("track");
-    liTracksEl.text(trackList[i]);
-    ulTracksEl.append(liTracksEl);
+    var songName = $(this).text();
+    console.log("Song clicked is: " + songName);
+  });
+  
+  $("#save").on("click", function () {
+    var artist = $(this).prev().val();
+    console.log("Searching for: " + artist);
+  });
+  
+  function renderTrackList(trackList) {
+    var tracksEl = $("#tracks");
+    tracksEl.empty();
+    var ulTracksEl = $("<ul>");
+    for (var i = 0; i < trackList.length; i++) {
+      var liTracksEl = $("<li>").addClass("track");
+      liTracksEl.text(trackList[i]);
+      ulTracksEl.append(liTracksEl);
+    }
+    tracksEl.append(ulTracksEl);
   }
-  tracksEl.append(ulTracksEl);
-}
+  
+  var testTrackList = [
+    "Darcy's Donkey",
+    "Cornfield Chase",
+    "There and Back Again",
+    "Sweden",
+    "Island Life",
+  ];
+  renderTrackList(testTrackList);
+  
 
-var testTrackList = [
-  "Darcy's Donkey",
-  "Cornfield Chase",
-  "There and Back Again",
-  "Sweden",
-  "Island Life",
-];
-renderTrackList(testTrackList);
 
 getArtist();
+
