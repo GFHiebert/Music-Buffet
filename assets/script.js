@@ -1,3 +1,4 @@
+
 let discoverBtn = document.getElementById("discover");
 let apikey = "368598-musicbuf-RZ4G3NI6";
 let addBtn = document.getElementById("add")
@@ -34,12 +35,9 @@ $("body").on("click", ".track", function () {
     console.log("Song clicked is: " + songName);
   });
   
-  $("#save").on("click", function () {
-    var artist = $(this).prev().val();
-    console.log("Searching for: " + artist);
-  });
   
   function renderTrackList(trackList) {
+
     var tracksEl = $("#tracks");
     tracksEl.empty();
     var ulTracksEl = $("<ul>");
@@ -63,4 +61,3 @@ $("body").on("click", ".track", function () {
 
 
 getArtist();
-
