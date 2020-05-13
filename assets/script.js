@@ -1,3 +1,4 @@
+
 let discoverBtn = document.getElementById("discover");
 let apikey = "368598-musicbuf-RZ4G3NI6";
 
@@ -35,6 +36,7 @@ $("#save").on("click", function () {
   console.log("Searching for: " + artist);
 });
 
+
 function renderTrackList(trackList) {
   var tracksEl = $("#tracks");
   tracksEl.empty();
@@ -47,13 +49,20 @@ function renderTrackList(trackList) {
   tracksEl.append(ulTracksEl);
 }
 
-var testTrackList = [
-  "Darcy's Donkey",
-  "Cornfield Chase",
-  "There and Back Again",
-  "Sweden",
-  "Island Life",
-];
+
+var testTrackList = ["Darcy's Donkey", "Cornfield Chase", "There and Back Again", "Sweden", "Island Life"];
 renderTrackList(testTrackList);
+
+
+$("#save").click(function (event) {
+    event.preventDefault();
+    var artistSearch = $("#search-item").val().trim();
+    console.log("test");
+    pullArtist(artistSearch);
+
+})
+
+
+
 
 getArtist();
