@@ -27,10 +27,10 @@ ul {
 ul li {
   list-style-type: none;
   border: 1px solid #ddd;
-  margin-top: -1px;
-  background-color:navy;
-  padding: 12px;
-  color:white
+  font-weight: bold;
+  background-color: rgb(59, 59, 59);
+  padding: 2px;
+  color: white;
 }
 input[type="text"] {
   margin-top: 5px;
@@ -81,8 +81,8 @@ div.container4 {
 .mycoolbtns {
   margin: 0;
   position: absolute;
-  top: 40%;
-  left: 42%;
+  top: 25%;
+  left: 40%;
 }
 #discover {
   font-size: 40px;
