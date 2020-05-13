@@ -1,17 +1,15 @@
 //Listeners
-$("body").on("click", ".track", function() {
+$("body").on("click", ".track", function () {
     var songName = $(this).text();
     console.log("Song clicked is: " + songName);
 })
 
-$("#save").on("click", function() {
+$("#save").on("click", function () {
 
     var artist = $(this).prev().val();
     console.log("Searching for: " + artist);
 
 })
-
-
 
 function renderTrackList(trackList) {
     var tracksEl = $("#tracks");
@@ -25,9 +23,17 @@ function renderTrackList(trackList) {
     tracksEl.append(ulTracksEl);
 }
 
-
-
-
 var testTrackList = ["Darcy's Donkey", "Cornfield Chase", "There and Back Again", "Sweden", "Island Life"];
 renderTrackList(testTrackList);
+
+
+$("#save").click(function (event) {
+    event.preventDefault();
+    var artistSearch = $("#search-item").val().trim();
+    console.log("test");
+    pullArtist(artistSearch);
+
+})
+
+
 

@@ -1,43 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width,initial-scale=1,shrink-to-fit=no"/>
-    <link rel="stylesheet" href="./assets/styles.css" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <title>Music Buffet</title>
-  </head>
 
-  <body>
-    <div class="container-fluid">
-      <div class="header">
-        <h1>Music Buffet</h1>
-      </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no" />
+  <link rel="stylesheet" href="./assets/styles.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <title>Music Buffet</title>
+</head>
 
-      <!-- input field & search button -->
-      <div class="container4">
-        <input type="text" id="newItem" placeholder="search artist" />
-        <button type="submit" id="save"><i class="fa fa-search"></i></button>
-      </div>
-      <!-- Where saved tracks will be appended -->
-      <!-- <div class="container-fluid"> -->
-      <div id="tracks" class="p-2 flex-fill bd-highlight" style="width: 25rem;">
-        <h4>Songs you Like!</h4>
-        <div id="trackList" class="card-body flex-fill"></div>
-      </div>
+<body>
+  <div class="container-fluid">
+    <div class="header">
+      <h1>Music Buffet</h1>
     </div>
+
     <!-- input field & search button -->
-          <div class= 'container4'>
-            <input type="text" id="newItem" placeholder="search artist" />
-            <button type="submit" id="save"><i class="fa fa-search"></i></button>
-          </div>
-          <!-- Where saved tracks will be appended -->
-       <div id="tracks" class="p-2 flex-fill bd-highlight" style="width: 25rem;"> 
-        <h4>Songs you Like!</h4>   
-        <div id= "trackList" class="cardbody">
+    <div class="container4">
+      <input type="text" id="search-item" placeholder="search artist" />
+      <button type="submit" id="save"><i class="fa fa-search"></i></button>
+    </div>
+    <!-- Where saved tracks will be appended -->
+    <!-- <div class="container-fluid"> -->
+
+
+    <div id="tracks" class="p-2 flex-fill bd-highlight" style="width: 25rem;">
+      <h4>Songs you Like!</h4>
+      <div id="trackList" class="card-body flex-fill"></div>
+    </div>
+
 
 
     <!-- discover and other buttons -->
@@ -51,13 +43,6 @@
           <div class="btn btn-warning btn-md">Add Song</div>
           <div class="btn btn-info btn-md">Listen</div>
         </div>
-        <div class="d-flex">
-       <div id="widget" class="p-2 ml-auto">
-         <div class="cardbody">widget
-         </div>
-        
-       </div>
-
       </div>
     </div>
 
@@ -79,16 +64,21 @@
 
     </div>
 
-    <div id="stars"></div>
-    <div id="stars2"></div>
-    <div id="stars3"></div>
+  </div>
+  </div>
 
-   
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="./assets/script.js"></script>
-    <script src="./assets/API-log.js"></script>
+  <div id="stars"></div>
+  <div id="stars2"></div>
+  <div id="stars3"></div>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="./assets/script.js"></script>
+  <script src="./assets/API-log.js"></script>
+
+
+
 
 
 </body>
-</html>
 
+</html>
