@@ -1,9 +1,7 @@
-
 h1 {
   color: white;
   text-align: center;
   padding: 8px;
-  position: absolute;
   left: 0;
   right: 0;
   color: #FFF;
@@ -39,50 +37,13 @@ input[type="text"] {
   font-size: 15px;
   border: 1px solid grey;
   text-align: center;
-  object-position: center;
   width: 20%;
   background: #f1f1f1;
 }
-#newItem {
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-right: -50%;
-  transform: translate(-50%, -50%);
-}
 
-button {
-  border-radius: 5px;
-  margin-top: 5px;
-  width: 40px;
-  padding: 5px;
-  background: blue;
-  color: white;
-  font-size: 17px;
-  border: 2px solid #2196f3;
-  cursor: pointer;
-  clear: right;
-}
-
-div.container4 {
-  height: 10em;
-  position: relative;
-}
-
-#save {
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 62%;
-  margin-right: -50%;
-  transform: translate(-50%, -50%);
-}
 .mycoolbtns {
   margin: 0;
-  position: absolute;
-  top: 40%;
-  left: 42%;
+
 }
 #discover {
   font-size: 40px;
@@ -98,10 +59,10 @@ div.container4 {
   max-width: 80%;
   background-color: navy;
   border-radius: 5px;
-  margin-top: -200px;
+ 
   font-weight: bold;
   color: white;
-  margin-right:5px;
+
  
 }
 #artists{
@@ -119,7 +80,7 @@ div.container4 {
   background-color: navy;
   width: 500px;
   height: 200px;
-  max-width: 80%;
+   max-width: 80%; 
   border-radius: 5px;
   margin-right:5px;
 }

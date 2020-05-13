@@ -51,10 +51,10 @@ $("body").on("click", ".track", function () {
   
   var testTrackList = [
     "Darcy's Donkey",
-    "Cornfield Chase",
-    "There and Back Again",
-    "Sweden",
-    "Island Life",
+    // "Cornfield Chase",
+    // "There and Back Again",
+    // "Sweden",
+    // "Island Life",
   ];
   renderTrackList(testTrackList);
   
