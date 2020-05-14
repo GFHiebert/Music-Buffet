@@ -50,14 +50,14 @@ $("body").on("click", ".track", function () {
     tracksEl.append(ulTracksEl);
   }
   
-  var testTrackList = [
+  var testFavArtistList = [
     "Gaelic Storm",
     "The Dubliners",
     "Hans Zimmer",
     "Howard Shore",
     "C418",
   ];
-  renderTrackList(testTrackList);
+  renderTrackList(testFavArtistList);
   
 
 
