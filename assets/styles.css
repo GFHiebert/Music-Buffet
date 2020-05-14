@@ -76,11 +76,11 @@ input[type="text"] {
   margin-right:5px;
 
 }
-#trackList{
+#fav-artists{
   background-color: navy;
   width: 500px;
-  height: 200px;
-   max-width: 80%; 
+  height: auto;
+  max-width: 80%;
   border-radius: 5px;
   margin-right:5px;
 }
