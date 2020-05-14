@@ -8,57 +8,62 @@ jQuery.ajaxPrefilter(function (options) {
     options.url = "https://cors-anywhere.herokuapp.com/" + options.url;
   }
 });
-function getArtist() {
+
+//discover click
   $("#discover").on("click", function (event) {
     $("#artist-list").empty();
     event.preventDefault();
     var artist = $("#newItem").val();
-    var queryURL =
-      "https://tastedive.com/api/similar?q=" +
-      artist +
-      "&limit=6&info=0&k=" +
-      apikey;
+    getArtist(artist);
+  });
 
-    $.ajax({
-      url: queryURL,
-      method: "GET",
-    }).done(function (response) {
-      console.log(response);
-      for (let i = 0; i < response.Similar.Results.length; i++)
-        $("#artist-list").append(
-          "<li>" + response.Similar.Results[i].Name + "</li>"
-        );
-    });
+
+//artist click
+  $("body").on("click", ".artist", function (event) {
+    $("#artist-list").empty();
+    var artist = $(this).text();
+    getArtist(artist);
+  });
+
+
+function getArtist(artist) {
+  var queryURL =
+    "https://tastedive.com/api/similar?q=" +
+    artist +
+    "&limit=6&info=0&k=" +
+    apikey;
+
+  $.ajax({
+    url: queryURL,
+    method: "GET",
+  }).done(function (response) {
+    console.log(response);
+    for (let i = 0; i < response.Similar.Results.length; i++)
+      $("#artist-list").append(
+        "<li>" + response.Similar.Results[i].Name + "</li>"
+      );
   });
 }
-$("body").on("click", ".track", function () {
-    var songName = $(this).text();
-    console.log("Song clicked is: " + songName);
-  });
-  
-  
-  function renderTrackList(trackList) {
 
-    var tracksEl = $("#fav-artist-list");
-    tracksEl.empty();
-    var ulTracksEl = $("<ul>");
-    for (var i = 0; i < trackList.length; i++) {
-      var liTracksEl = $("<li>").addClass("track");
-      liTracksEl.text(trackList[i]);
-      ulTracksEl.append(liTracksEl);
-    }
-    tracksEl.append(ulTracksEl);
+function renderTrackList(favArtistList) {
+
+  var artistsEl = $("#fav-artist-list");
+  artistsEl.empty();
+  var ulArtistsEl = $("<ul>");
+  for (var i = 0; i < favArtistList.length; i++) {
+    var liArtistsEl = $("<li>").addClass("artist");
+    liArtistsEl.text(favArtistList[i]);
+    ulArtistsEl.append(liArtistsEl);
   }
-  
-  var testFavArtistList = [
-    "Gaelic Storm",
-    "The Dubliners",
-    "Hans Zimmer",
-    "Howard Shore",
-    "C418",
-  ];
-  renderTrackList(testFavArtistList);
-  
+  artistsEl.append(ulArtistsEl);
+}
 
+var testFavArtistList = [
+  "Gaelic Storm",
+  "The Dubliners",
+  "Hans Zimmer",
+  "Howard Shore",
+  "C418",
+];
+renderTrackList(testFavArtistList);
 
-getArtist();
