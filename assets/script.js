@@ -48,11 +48,11 @@ function renderFavArtistList(favArtistList) {
 }
 
 var testFavArtistList = [
-  "Gaelic Storm",
-  "The Dubliners",
-  "Hans Zimmer",
-  "Howard Shore",
-  "C418",
+  // ""Gaelic Storm",
+  // "The Dubliners",
+  // "Hans Zimmer",
+  // "Howard Shore",
+  // "C418","
 ];
 renderFavArtistList(testFavArtistList);
 
