@@ -20,7 +20,7 @@ jQuery.ajaxPrefilter(function (options) {
       artist +
       "&limit=6&info=0&k=" +
       apikey;
-
+//
     $.ajax({
       url: queryURL,
       method: "GET",
@@ -32,6 +32,7 @@ jQuery.ajaxPrefilter(function (options) {
         );
         // var clickLi = $('<li>').addClass('like');
         // clickLi.append('#trackList');
+        
 
       $("#newItem").val("");
     });
