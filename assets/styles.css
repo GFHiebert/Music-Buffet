@@ -51,13 +51,18 @@ input[type="text"] {
   line-height: 100px;
   width: 200px;
   border-radius: 8px;
+  background: -webkit-linear-gradient(white, blue);
+  background-clip:text ;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 #widget {
+  border:white solid thin;
   font-family: Arial, Helvetica, sans-serif;
   width: 500px;
   height: 200px;
   max-width: 80%;
-  background-color: navy;
+
   border-radius: 5px;
  
   font-weight: bold;
@@ -66,7 +71,8 @@ input[type="text"] {
  
 }
 #artists{
-  background-color:rgb(5, 41, 95);
+  border: solid thin white;
+  background-color:transparent;
   font-family: Arial, Helvetica, sans-serif;
   color:white;
   width: 500px;
@@ -77,7 +83,7 @@ input[type="text"] {
 
 }
 #trackList{
-  background-color: navy;
+  border:white solid;
   width: 500px;
   height: 200px;
    max-width: 80%; 
@@ -94,6 +100,20 @@ h4{
   background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 0%);
   overflow: hidden;
  
+}
+#add{
+  background: -webkit-linear-gradient(white, yellow);
+  background-clip:text ;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+}
+#listen{
+  background: -webkit-linear-gradient(white, turquoise);
+  background-clip:text ;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
 }
 
 #stars {
