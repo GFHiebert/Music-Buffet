@@ -38,13 +38,6 @@ jQuery.ajaxPrefilter(function (options) {
     });
     $('#artists').empty();
   });
-}
-function renderFavArtistList(favArtistList) {
-  var artistsEl = $("#tracks");
-
-    getArtist(artist);
-  });
-
 
 //artist click
   $("body").on("click", ".artist", function (event) {
