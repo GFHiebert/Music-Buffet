@@ -4,53 +4,46 @@ let apikey = "368598-musicbuf-RZ4G3NI6";
 let addBtn = document.getElementById("add");
 
 jQuery.ajaxPrefilter(function (options) {
-    if (options.crossDomain && jQuery.support.cors) {
-        options.url = "https://cors-anywhere.herokuapp.com/" + options.url;
-    }
+  if (options.crossDomain && jQuery.support.cors) {
+    options.url = "https://cors-anywhere.herokuapp.com/" + options.url;
+  }
 });
 
 //discover click
-  $("#discover").on("click", function (event) {
-    $("#artist-list").empty();
-    event.preventDefault();
-    var artist = $("#newItem").val();
+$("#discover").on("click", function (event) {
+  $("#artist-list").empty();
+  event.preventDefault();
+  var artist = $("#newItem").val();
 
-    var queryURL =
-      "https://tastedive.com/api/similar?q=" +
-      artist +
-      "&limit=6&info=0&k=" +
-      apikey;
+  var queryURL =
+    "https://tastedive.com/api/similar?q=" +
+    artist +
+    "&limit=6&info=0&k=" +
+    apikey;
 
-    $.ajax({
-      url: queryURL,
-      method: "GET",
-    }).then(function (response) {
-      console.log(response);
-      for (let i = 0; i < response.Similar.Results.length; i++)
-        $("#artists").append(
-          "<li>" + response.Similar.Results[i].Name + "</li>"
-        );
-        // var clickLi = $('<li>').addClass('like');
-        // clickLi.append('#trackList');
+  $.ajax({
+    url: queryURL,
+    method: "GET",
+  }).then(function (response) {
+    console.log(response);
+    for (let i = 0; i < response.Similar.Results.length; i++)
+      $("#artists").append(
+        "<li>" + response.Similar.Results[i].Name + "</li>"
+      );
+    // var clickLi = $('<li>').addClass('like');
+    // clickLi.append('#trackList');
 
-      $("#newItem").val("");
-    });
-    $('#artists').empty();
+    $("#newItem").val("");
   });
-}
-function renderFavArtistList(favArtistList) {
-  var artistsEl = $("#tracks");
-
-    getArtist(artist);
-  });
-
+  $('#artists').empty();
+});
 
 //artist click
-  $("body").on("click", ".artist", function (event) {
-    $("#artist-list").empty();
-    var artist = $(this).text();
-    getArtist(artist);
-  });
+$("body").on("click", ".artist", function (event) {
+  $("#artist-list").empty();
+  var artist = $(this).text();
+  getArtist(artist);
+});
 
 
 function getArtist(artist) {
@@ -159,12 +152,12 @@ var URI = "4ZA0jcRUrVPupPnyV66aoI"
 function iFrameW() {
   $("#widget").empty();
   var iFrameW = $("<iframe>").attr({
-      src: "https://open.spotify.com/embed/track/" + URI,
-      width: "300",
-      height: "80",
-      frameborder: "0",
-      allowtransparency: "true",
-      allow: "encrypted-media"
+    src: "https://open.spotify.com/embed/track/" + URI,
+    width: "300",
+    height: "80",
+    frameborder: "0",
+    allowtransparency: "true",
+    allow: "encrypted-media"
   })
   $("#widget").append(iFrameW)
 }
