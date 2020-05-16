@@ -4,48 +4,55 @@ let apikey = "368598-musicbuf-RZ4G3NI6";
 let addBtn = document.getElementById("add");
 
 jQuery.ajaxPrefilter(function (options) {
-    if (options.crossDomain && jQuery.support.cors) {
-        options.url = "https://cors-anywhere.herokuapp.com/" + options.url;
-    }
+  if (options.crossDomain && jQuery.support.cors) {
+    options.url = "https://cors-anywhere.herokuapp.com/" + options.url;
+  }
+
 });
 
 //discover click
-  $("#discover").on("click", function (event) {
-    $("#artist-list").empty();
-    event.preventDefault();
-    var artist = $("#newItem").val();
-
-    var queryURL =
-      "https://tastedive.com/api/similar?q=" +
-      artist +
-      "&limit=6&info=0&k=" +
-      apikey;
-//
-    $.ajax({
-      url: queryURL,
-      method: "GET",
-    }).then(function (response) {
-      console.log(response);
-      for (let i = 0; i < response.Similar.Results.length; i++)
-        $("#artists").append(
-          "<li>" + response.Similar.Results[i].Name + "</li>"
-        );
-        // var clickLi = $('<li>').addClass('like');
-        // clickLi.append('#trackList');
-        
-
-      $("#newItem").val("");
-    });
-    $('#artists').empty();
-  });
+$("#discover").on("click", function (event) {
+  $("#artist-list").empty();
+  event.preventDefault();
+  var artist = $("#newItem").val();
+  getArtist(artist)
+  $("#newItem").val("");
+});
 
 //artist click
-  $("body").on("click", ".artist", function (event) {
-    $("#artist-list").empty();
-    var artist = $(this).text();
-    getArtist(artist);
-  });
+$("body").on("click", ".artist", function (event) {
+  var artist = $(this).text();
+  getArtist(artist);
+});
 
+//add artist to favorites. This button likey to be removed
+$("#add").on("click", function () {
+  var artist = $("#newItem").val();
+  console.log(artist);
+  addArtist(artist);
+})
+
+//saves song to local storage array
+function addArtist(newArtistName) {
+  var favArtistList = JSON.parse(window.localStorage.getItem("favArtistList")) || [];
+
+  var newArtist = {
+    artistName: newArtistName
+  };
+
+  var isRepeated = false;
+  for (var i = 0; i < favArtistList.length; i++) {
+    if (newArtistName == favArtistList[i].artistName) {
+      isRepeated = true;
+    }
+  }
+
+  if (isRepeated == false) {
+    favArtistList.push(newArtist);
+    window.localStorage.setItem("favArtistList", JSON.stringify(favArtistList));
+  }
+  renderFavArtistList();
+}
 
 function getArtist(artist) {
   var queryURL =
@@ -59,25 +66,36 @@ function getArtist(artist) {
     method: "GET",
   }).done(function (response) {
     console.log(response);
-    for (let i = 0; i < response.Similar.Results.length; i++)
-      $("#artist-list").append(
-        "<li>" + response.Similar.Results[i].Name + "</li>"
-      );
+    if (response.Similar.Results.length == 0 || artist == "" || artist == null) {
+    } else {
+      $("#artist-list").empty();
+      for (let i = 0; i < response.Similar.Results.length; i++) {
+        $("#artist-list").append(
+          "<li>" + response.Similar.Results[i].Name + "</li>"
+        );
+      }
+      addArtist(artist);
+    } 
   });
+
 }
 
-function renderFavArtistList(favArtistList) {
+function renderFavArtistList() {
 
+  var favArtistList = JSON.parse(window.localStorage.getItem("favArtistList")) || [];
   var artistsEl = $("#fav-artist-list");
 
-  artistsEl.empty();
-  var ulArtistsEl = $("<ul>");
-  for (var i = 0; i < favArtistList.length; i++) {
-    var liArtistsEl = $("<li>").addClass("artist");
-    liArtistsEl.text(favArtistList[i]);
-    ulArtistsEl.append(liArtistsEl);
+  if (favArtistList !== null) {
+    artistsEl.empty();
+    var ulArtistsEl = $("<ul>");
+    for (var i = 0; i < favArtistList.length; i++) {
+      var liArtistsEl = $("<li>").addClass("artist");
+      liArtistsEl.text(favArtistList[i].artistName);
+      ulArtistsEl.append(liArtistsEl);
+    }
+    artistsEl.append(ulArtistsEl);
   }
-  artistsEl.append(ulArtistsEl);
+
 }
 
 var testFavArtistList = [
@@ -87,7 +105,7 @@ var testFavArtistList = [
   "Howard Shore",
   "C418",
 ];
-renderFavArtistList(testFavArtistList);
+renderFavArtistList();
 
 
 
@@ -153,12 +171,12 @@ var URI = "4ZA0jcRUrVPupPnyV66aoI"
 function iFrameW() {
   $("#widget").empty();
   var iFrameW = $("<iframe>").attr({
-      src: "https://open.spotify.com/embed/track/" + URI,
-      width: "300",
-      height: "80",
-      frameborder: "0",
-      allowtransparency: "true",
-      allow: "encrypted-media"
+    src: "https://open.spotify.com/embed/track/" + URI,
+    width: "300",
+    height: "80",
+    frameborder: "0",
+    allowtransparency: "true",
+    allow: "encrypted-media"
   })
   $("#widget").append(iFrameW)
 }
@@ -166,4 +184,3 @@ function iFrameW() {
 iFrameW();
 
 
-getArtist();
