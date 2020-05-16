@@ -17,7 +17,7 @@ $("#discover").on("click", function (event) {
   var artist = $("#newItem").val();
   getArtist(artist)
   $("#newItem").val("");
-  spotifyPull(artist);
+  
 });
 
 //artist click
@@ -32,11 +32,9 @@ $("body").on("click", ".sim-artist", function (event) {
   getArtist(artist);
 });
 
-//add artist to favorites. This button likey to be removed
-$("#add").on("click", function () {
-  var artist = $("#newItem").val();
-  console.log(artist);
-  addArtist(artist);
+//skip button click
+$("#skip").on("click", function () {
+  
 })
 
 //saves song to local storage array
@@ -62,6 +60,7 @@ function addArtist(newArtistName) {
 }
 
 function getArtist(artist) {
+  spotifyPull(artist);
   var queryURL =
     "https://tastedive.com/api/similar?q=" +
     artist +
