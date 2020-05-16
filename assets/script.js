@@ -45,7 +45,7 @@ $("#skip").on("click", function () {
       } else {
         iFrameW(currentSongPlaylist[0].id)
         currentSongID = currentSongPlaylist[0].id;
-      }
+      } 
       break;
     }
   }
