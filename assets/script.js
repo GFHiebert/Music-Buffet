@@ -1,4 +1,3 @@
-
 let discoverBtn = document.getElementById("discover");
 let apikey = "368598-musicbuf-RZ4G3NI6";
 let addBtn = document.getElementById("add");
@@ -9,7 +8,6 @@ jQuery.ajaxPrefilter(function (options) {
   if (options.crossDomain && jQuery.support.cors) {
     options.url = "https://cors-anywhere.herokuapp.com/" + options.url;
   }
-
 });
 
 //discover click
@@ -17,7 +15,7 @@ $("#discover").on("click", function (event) {
   $("#artist-list").empty();
   event.preventDefault();
   var artist = $("#newItem").val();
-  getArtist(artist)
+  getArtist(artist);
   $("#newItem").val("");
 });
 
@@ -32,6 +30,7 @@ $("body").on("click", ".sim-artist", function (event) {
   var artist = $(this).text();
   getArtist(artist);
 });
+
 
 //skip button click
 $("#skip").on("click", function () {
@@ -51,10 +50,11 @@ $("#skip").on("click", function () {
 
 //saves song to local storage array
 function addArtist(newArtistName) {
-  var favArtistList = JSON.parse(window.localStorage.getItem("favArtistList")) || [];
+  var favArtistList =
+    JSON.parse(window.localStorage.getItem("favArtistList")) || [];
 
   var newArtist = {
-    artistName: newArtistName
+    artistName: newArtistName,
   };
 
   var isRepeated = false;
@@ -84,23 +84,26 @@ function getArtist(artist) {
     method: "GET",
   }).done(function (response) {
     console.log(response);
-    if (response.Similar.Results.length == 0 || artist == "" || artist == null) {
+    if (
+      response.Similar.Results.length == 0 ||
+      artist == "" ||
+      artist == null
+    ) {
     } else {
       $("#artist-list").empty();
       for (let i = 0; i < response.Similar.Results.length; i++) {
         $("#artist-list").append(
-          "<li class = sim-artist>" + response.Similar.Results[i].Name + "</li>"
+          "<h5 class = sim-artist>" + response.Similar.Results[i].Name + "</h5>"
         );
       }
       addArtist(artist);
     }
   });
-
 }
 
 function renderFavArtistList() {
-
-  var favArtistList = JSON.parse(window.localStorage.getItem("favArtistList")) || [];
+  var favArtistList =
+    JSON.parse(window.localStorage.getItem("favArtistList")) || [];
   var artistsEl = $("#fav-artist-list");
 
   if (favArtistList !== null) {
@@ -113,10 +116,11 @@ function renderFavArtistList() {
     }
     artistsEl.append(ulArtistsEl);
   }
-
 }
 
 renderFavArtistList();
+
+let accessToken;
 
 // Spotify Widget
 function iFrameW(URI) {
@@ -133,6 +137,7 @@ function iFrameW(URI) {
 };
 
 function spotifyPull(artistResult) {
+
 
   const hash = window.location.hash
     .substring(1)
