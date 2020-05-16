@@ -34,15 +34,17 @@ $("body").on("click", ".sim-artist", function (event) {
 
 //skip button click
 $("#skip").on("click", function () {
+  console.log("Skip button pressed");
   for(var i = 0; i < currentSongPlaylist.length; i++) {
     if(currentSongID == currentSongPlaylist.id) {
+      console.log("currentSongID: " + currentSongID + " =? currentSongPlaylist.id : " + currentSongPlaylist.id);
       if(currentSongPlaylist.length >= (i+1)) {
         iFrameW(currentSongPlaylist[i+1].id)
         currentSongID = currentSongPlaylist[i+1].id;
       } else {
         iFrameW(currentSongPlaylist[0].id)
         currentSongID = currentSongPlaylist[0].id;
-      }
+      } 
       break;
     }
   }
@@ -182,6 +184,7 @@ function spotifyPull(artistResult) {
       console.log(response)
       currentSongPlaylist = response.tracks;
       console.log("Tracklist: " + currentSongPlaylist);
+      console.log("First id = " + currentSongPlaylist[0].id);
       var songID = response.tracks[0].id
       currentSongID = songID;
       iFrameW(songID)
