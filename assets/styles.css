@@ -17,6 +17,7 @@ h1 {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
 ul {
   list-style-type: none;
   padding: 0;
@@ -27,12 +28,12 @@ ul li {
   list-style-type: none;
   border: 1px solid #ddd;
   font-weight: bold;
-
   padding: 3px;
   color: white;
   font-size: 20px;
   cursor: pointer;
 }
+
 input[type="text"] {
   background-color: transparent;
   margin-top: 5px;
@@ -56,18 +57,18 @@ input[type="text"] {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
 #widget {
   border: white solid thin;
   font-family: Arial, Helvetica, sans-serif;
   width: 500px;
   height: 100px;
   max-width: 80%;
-
   border-radius: 5px;
-
   font-weight: bold;
   color: white;
 }
+
 #artist-list {
   border: solid thin white;
   background-color: transparent;
@@ -82,17 +83,17 @@ input[type="text"] {
 
   
 }
+
 .sim-artist{
   cursor: pointer;
   text-align: center;
-
-
 
 }
 h4 {
   color: white;
   text-align: center;
 }
+
 h5 {
   text-align: center;
 }
@@ -112,17 +113,18 @@ body {
 }
 
 #skip {
- master
   background: -webkit-linear-gradient(white, turquoise);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: bold;
 }
+
 iframe{
   width:100%;
   height: 100%;
 }
+
 #stars {
   width: 1px;
   height: 1px;
@@ -306,6 +308,7 @@ iframe{
     1388px 112px #fff;
   animation: animStar 50s linear infinite;
 }
+
 #stars:after {
   content: " ";
   position: absolute;
@@ -549,6 +552,7 @@ iframe{
     1003px 834px #fff, 1029px 326px #fff;
   animation: animStar 100s linear infinite;
 }
+
 #stars2:after {
   content: " ";
   position: absolute;
@@ -641,6 +645,7 @@ iframe{
     206px 1146px #fff;
   animation: animStar 150s linear infinite;
 }
+
 #stars3:after {
   content: " ";
   position: absolute;
@@ -675,6 +680,7 @@ iframe{
     1365px 275px #fff, 1793px 85px #fff, 739px 373px #fff, 737px 1089px #fff,
     206px 1146px #fff;
 }
+
 @keyframes animStar {
   from {
     transform: translateY(0px);
