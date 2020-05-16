@@ -2,6 +2,8 @@
 let discoverBtn = document.getElementById("discover");
 let apikey = "368598-musicbuf-RZ4G3NI6";
 let addBtn = document.getElementById("add");
+var currentSongPlaylist = [];
+var currentSongID = "";
 
 jQuery.ajaxPrefilter(function (options) {
   if (options.crossDomain && jQuery.support.cors) {
@@ -17,7 +19,6 @@ $("#discover").on("click", function (event) {
   var artist = $("#newItem").val();
   getArtist(artist)
   $("#newItem").val("");
-  
 });
 
 //artist click
@@ -32,9 +33,25 @@ $("body").on("click", ".sim-artist", function (event) {
   getArtist(artist);
 });
 
-//skip button
-$("#skip").on("click", function () {
 
+//skip button click
+$("#skip").on("click", function () {
+  console.log("Skip button pressed");
+  console.log(currentSongPlaylist);
+  for (var i = 0; i < currentSongPlaylist.length; i++) {
+    console.log(currentSongPlaylist[i]);
+    console.log("currentSongID: " + currentSongID + " =? currentSongPlaylist.id : " + currentSongPlaylist.id);
+    if (currentSongID == currentSongPlaylist[i].id) {
+      if (currentSongPlaylist.length > i + 1) {
+        iFrameW(currentSongPlaylist[i + 1].id)
+        currentSongID = currentSongPlaylist[i + 1].id;
+      } else {
+        iFrameW(currentSongPlaylist[0].id)
+        currentSongID = currentSongPlaylist[0].id;
+      }
+      break;
+    }
+  }
 })
 
 //saves song to local storage array
@@ -113,6 +130,7 @@ var testFavArtistList = [
 ];
 renderFavArtistList();
 
+let accessToken;
 
 // Spotify Widget
 function iFrameW(URI) {
@@ -171,7 +189,11 @@ function spotifyPull(artistResult) {
       beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', 'Bearer ' + _token); },
     }).then(function (response) {
       console.log(response)
+      currentSongPlaylist = response.tracks;
+      console.log("Tracklist: " + currentSongPlaylist);
+      console.log("First id = " + currentSongPlaylist[0].id);
       var songID = response.tracks[0].id
+      currentSongID = songID;
       iFrameW(songID)
     });
   });
