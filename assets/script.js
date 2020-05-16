@@ -77,7 +77,7 @@ function getArtist(artist) {
       $("#artist-list").empty();
       for (let i = 0; i < response.Similar.Results.length; i++) {
         $("#artist-list").append(
-          "<li class = sim-artist>" + response.Similar.Results[i].Name + "</li>"
+          "<h5 class = sim-artist>" + response.Similar.Results[i].Name + "</h5>"
         );
       }
       addArtist(artist);
@@ -104,13 +104,7 @@ function renderFavArtistList() {
 
 }
 
-var testFavArtistList = [
-  // ""Gaelic Storm",
-  // "The Dubliners",
-  // "Hans Zimmer",
-  // "Howard Shore",
-  // "C418","
-];
+
 renderFavArtistList();
 
 
