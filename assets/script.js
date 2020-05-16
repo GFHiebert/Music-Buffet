@@ -25,6 +25,12 @@ $("body").on("click", ".artist", function (event) {
   getArtist(artist);
 });
 
+//sim-artist click
+$("body").on("click", ".sim-artist", function (event) {
+  var artist = $(this).text();
+  getArtist(artist);
+});
+
 //add artist to favorites. This button likey to be removed
 $("#add").on("click", function () {
   var artist = $("#newItem").val();
@@ -71,7 +77,7 @@ function getArtist(artist) {
       $("#artist-list").empty();
       for (let i = 0; i < response.Similar.Results.length; i++) {
         $("#artist-list").append(
-          "<li>" + response.Similar.Results[i].Name + "</li>"
+          "<li class = sim-artist>" + response.Similar.Results[i].Name + "</li>"
         );
       }
       addArtist(artist);
@@ -182,5 +188,3 @@ function iFrameW() {
 }
 
 iFrameW();
-
-
