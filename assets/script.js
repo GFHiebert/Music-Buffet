@@ -37,17 +37,17 @@ $("body").on("click", ".sim-artist", function (event) {
 $("#skip").on("click", function () {
   console.log("Skip button pressed");
   console.log(currentSongPlaylist);
-  for(var i = 0; i < currentSongPlaylist.length; i++) {
+  for (var i = 0; i < currentSongPlaylist.length; i++) {
     console.log(currentSongPlaylist[i]);
-    if(currentSongID == currentSongPlaylist.id) {
-      console.log("currentSongID: " + currentSongID + " =? currentSongPlaylist.id : " + currentSongPlaylist.id);
-      if(currentSongPlaylist.length >= (i+1)) {
-        iFrameW(currentSongPlaylist[i+1].id)
-        currentSongID = currentSongPlaylist[i+1].id;
+    console.log("currentSongID: " + currentSongID + " =? currentSongPlaylist.id : " + currentSongPlaylist.id);
+    if (currentSongID == currentSongPlaylist.id) {
+      if (currentSongPlaylist.length >= (i + 1)) {
+        iFrameW(currentSongPlaylist[i + 1].id)
+        currentSongID = currentSongPlaylist[i + 1].id;
       } else {
         iFrameW(currentSongPlaylist[0].id)
         currentSongID = currentSongPlaylist[0].id;
-      } 
+      }
       break;
     }
   }
