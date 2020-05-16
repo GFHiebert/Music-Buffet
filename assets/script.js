@@ -184,4 +184,3 @@ function iFrameW() {
 iFrameW();
 
 
-getArtist();
