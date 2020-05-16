@@ -36,7 +36,9 @@ $("body").on("click", ".sim-artist", function (event) {
 //skip button click
 $("#skip").on("click", function () {
   console.log("Skip button pressed");
+  console.log(currentSongPlaylist);
   for(var i = 0; i < currentSongPlaylist.length; i++) {
+    console.log(currentSongPlaylist[i]);
     if(currentSongID == currentSongPlaylist.id) {
       console.log("currentSongID: " + currentSongID + " =? currentSongPlaylist.id : " + currentSongPlaylist.id);
       if(currentSongPlaylist.length >= (i+1)) {
