@@ -181,6 +181,7 @@ function spotifyPull(artistResult) {
     }).then(function (response) {
       console.log(response)
       currentSongPlaylist = response.tracks;
+      console.log("Tracklist: " + currentSongPlaylist);
       var songID = response.tracks[0].id
       currentSongID = songID;
       iFrameW(songID)
@@ -188,5 +189,3 @@ function spotifyPull(artistResult) {
   });
 
 }
-
-console.log("Tracklist: " + currentSongPlaylist);
