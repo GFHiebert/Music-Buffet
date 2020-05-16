@@ -12,7 +12,6 @@ Everytime you search an artist it will append to a list on the left.
 When you click on an artist from the "similar artist" list, it will also append to the list on the left.
 
 
-
 ## Known Bugs/Issues
 
 ```
