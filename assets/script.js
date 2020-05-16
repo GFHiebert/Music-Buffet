@@ -41,7 +41,7 @@ $("#skip").on("click", function () {
     console.log(currentSongPlaylist[i]);
     console.log("currentSongID: " + currentSongID + " =? currentSongPlaylist.id : " + currentSongPlaylist.id);
     if (currentSongID == currentSongPlaylist[i].id) {
-      if (currentSongPlaylist.length >= (i + 1)) {
+      if (currentSongPlaylist.length >= (i)) {
         iFrameW(currentSongPlaylist[i + 1].id)
         currentSongID = currentSongPlaylist[i + 1].id;
       } else {
