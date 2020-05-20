@@ -34,6 +34,7 @@ $("body").on("click", ".sim-artist", function (event) {
 });
 
 
+
 //skip button click
 $("#skip").on("click", function () {
   console.log("Skip button pressed");
@@ -91,16 +92,39 @@ function getArtist(artist) {
     console.log(response);
     if (response.Similar.Results.length == 0 || artist == "" || artist == null) {
     } else {
-      $("#artist-list").empty();
-      for (let i = 0; i < response.Similar.Results.length; i++) {
-        $("#artist-list").append(
-          "<li class = sim-artist>" + response.Similar.Results[i].Name + "</li>"
-        );
+      var simArtistList = JSON.parse(window.localStorage.getItem("simArtistList")) || [];
+      simArtistList.empty();
+      for(var i=0; i<response.Similar.Results.length; i++) {
+        simArtistList.push(response.Similar.Results[i].Name)   
       }
+      window.localStorage.setItem("simArtistList", JSON.stringify(simArtistList));
+      renderSimArtistList();
+      // $("#artist-list").empty();
+      // for (let i = 0; i < response.Similar.Results.length; i++) {
+      //   $("#artist-list").append(
+      //     "<li class = sim-artist>" + response.Similar.Results[i].Name + "</li>"
+      //   );
+      // }
       addArtist(artist);
     }
   });
 
+}
+
+function renderSimArtistList() {
+  var simArtistList = JSON.parse(window.localStorage.getItem("simArtistList")) || [];
+  var artistsEl = $("artist-list");
+
+  if (simArtistList !== null) {
+    artistsEl.empty();
+    var ulArtistsEl = $("<ul>");
+    for (var i = 0; i < simArtistList.length; i++) {
+      var liArtistsEl = $("<li>").addClass("sim-artist");
+      liArtistsEl.text(simArtistList[i].artistName);
+      ulArtistsEl.append(liArtistsEl);
+    }
+    artistsEl.append(ulArtistsEl);
+  }
 }
 
 function renderFavArtistList() {
