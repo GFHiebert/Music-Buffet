@@ -34,7 +34,9 @@ $("body").on("click", ".sim-artist", function (event) {
 });
 
 
+
 //skip button click, checks if near end of array, if so will loop to beginning
+
 $("#skip").on("click", function () {
   for (var i = 0; i < currentSongPlaylist.length; i++) {
     if (currentSongID == currentSongPlaylist[i].id) {
@@ -83,18 +85,44 @@ function getArtist(artist) {
   }).done(function (response) {
     if (response.Similar.Results.length == 0 || artist == "" || artist == null) {
     } else {
-      $("#artist-list").empty();
-      for (let i = 0; i < response.Similar.Results.length; i++) {
-        $("#artist-list").append(
-          "<li class = sim-artist>" + response.Similar.Results[i].Name + "</li>"
-        );
+      var simArtistList = JSON.parse(window.localStorage.getItem("simArtistList")) || [];
+      simArtistList.empty();
+      for(var i=0; i<response.Similar.Results.length; i++) {
+        simArtistList.push(response.Similar.Results[i].Name)   
       }
+      window.localStorage.setItem("simArtistList", JSON.stringify(simArtistList));
+      renderSimArtistList();
+      // $("#artist-list").empty();
+      // for (let i = 0; i < response.Similar.Results.length; i++) {
+      //   $("#artist-list").append(
+      //     "<li class = sim-artist>" + response.Similar.Results[i].Name + "</li>"
+      //   );
+      // }
       addArtist(artist);
     }
   });
 }
 
+// retrieves simArtistList from local storage and renders
+function renderSimArtistList() {
+  var simArtistList = JSON.parse(window.localStorage.getItem("simArtistList")) || [];
+  var artistsEl = $("artist-list");
+
+  if (simArtistList !== null) {
+    artistsEl.empty();
+    var ulArtistsEl = $("<ul>");
+    for (var i = 0; i < simArtistList.length; i++) {
+      var liArtistsEl = $("<li>").addClass("sim-artist");
+      liArtistsEl.text(simArtistList[i].artistName);
+      ulArtistsEl.append(liArtistsEl);
+    }
+    artistsEl.append(ulArtistsEl);
+  }
+}
+
+
 //retrieves favArtistList from local storage and renders
+
 function renderFavArtistList() {
   var favArtistList = JSON.parse(window.localStorage.getItem("favArtistList")) || [];
   var artistsEl = $("#fav-artist-list");
