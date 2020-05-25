@@ -85,8 +85,7 @@ function getArtist(artist) {
   }).done(function (response) {
     if (response.Similar.Results.length == 0 || artist == "" || artist == null) {
     } else {
-      var simArtistList = JSON.parse(window.localStorage.getItem("simArtistList")) || [];
-      simArtistList.empty();
+      let simArtistList = [];
       for(var i=0; i<response.Similar.Results.length; i++) {
         simArtistList.push(response.Similar.Results[i].Name)   
       }
