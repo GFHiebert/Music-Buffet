@@ -112,7 +112,7 @@ function renderSimArtistList() {
     var ulArtistsEl = $("<ul>");
     for (var i = 0; i < simArtistList.length; i++) {
       var liArtistsEl = $("<li>").addClass("sim-artist");
-      liArtistsEl.text(simArtistList[i].artistName);
+      liArtistsEl.text(simArtistList[i]);
       ulArtistsEl.append(liArtistsEl);
     }
     artistsEl.append(ulArtistsEl);
