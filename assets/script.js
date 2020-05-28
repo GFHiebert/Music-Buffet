@@ -194,6 +194,7 @@ function spotifyPull(artistResult) {
       currentSongPlaylist = response.tracks;
       var songID = response.tracks[0].id
       currentSongID = songID;
+      window.localStorage.setItem("lastPlayedSongID", songID);
       iFrameW(songID)
     });
   });
@@ -201,4 +202,7 @@ function spotifyPull(artistResult) {
 
 renderFavArtistList();
 renderSimArtistList();
-iFrameW(currentSongID);
+currentSongID = window.localStorage.getItem("lastPlayedSongID")
+if (currentSongID !== "") {
+  iFrameW(currentSongID);
+}
