@@ -200,3 +200,5 @@ function spotifyPull(artistResult) {
 }
 
 renderFavArtistList();
+renderSimArtistList();
+iFrameW(currentSongID);
