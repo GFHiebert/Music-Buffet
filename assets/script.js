@@ -86,8 +86,8 @@ function getArtist(artist) {
     if (response.Similar.Results.length == 0 || artist == "" || artist == null) {
     } else {
       let simArtistList = [];
-      for(var i=0; i<response.Similar.Results.length; i++) {
-        simArtistList.push(response.Similar.Results[i].Name)   
+      for (var i = 0; i < response.Similar.Results.length; i++) {
+        simArtistList.push(response.Similar.Results[i].Name)
       }
       window.localStorage.setItem("simArtistList", JSON.stringify(simArtistList));
       renderSimArtistList();
@@ -107,16 +107,16 @@ function renderSimArtistList() {
   var simArtistList = JSON.parse(window.localStorage.getItem("simArtistList")) || [];
   var artistsEl = $("#artist-list");
 
-  if (simArtistList !== null) {
-    artistsEl.empty();
-    var ulArtistsEl = $("<ul>");
-    for (var i = 0; i < simArtistList.length; i++) {
-      var liArtistsEl = $("<li>").addClass("sim-artist");
-      liArtistsEl.text(simArtistList[i]);
-      ulArtistsEl.append(liArtistsEl);
-    }
-    artistsEl.append(ulArtistsEl);
+
+  artistsEl.empty();
+  var ulArtistsEl = $("<ul>");
+  for (var i = 0; i < simArtistList.length; i++) {
+    var liArtistsEl = $("<li>").addClass("sim-artist");
+    liArtistsEl.text(simArtistList[i]);
+    ulArtistsEl.append(liArtistsEl);
   }
+  artistsEl.append(ulArtistsEl);
+
 }
 
 
