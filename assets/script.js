@@ -202,7 +202,7 @@ function spotifyPull(artistResult) {
 
 renderFavArtistList();
 renderSimArtistList();
-currentSongID = window.localStorage.getItem("lastPlayedSongID")
+currentSongID = window.localStorage.getItem("lastPlayedSongID") || "";
 if (currentSongID !== "") {
   iFrameW(currentSongID);
 }
