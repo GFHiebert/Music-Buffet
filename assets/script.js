@@ -105,7 +105,7 @@ function getArtist(artist) {
 // retrieves simArtistList from local storage and renders
 function renderSimArtistList() {
   var simArtistList = JSON.parse(window.localStorage.getItem("simArtistList")) || [];
-  var artistsEl = $("artist-list");
+  var artistsEl = $("#artist-list");
 
   if (simArtistList !== null) {
     artistsEl.empty();
